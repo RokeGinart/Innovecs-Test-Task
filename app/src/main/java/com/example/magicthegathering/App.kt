@@ -1,7 +1,6 @@
 package com.example.magicthegathering
 
 import android.app.Application
-import android.util.Log
 import com.example.magicthegathering.data.di.AppComponent
 import com.example.magicthegathering.data.di.DaggerAppComponent
 

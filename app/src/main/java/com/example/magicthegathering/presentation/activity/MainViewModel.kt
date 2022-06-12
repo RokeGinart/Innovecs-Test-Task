@@ -11,16 +11,18 @@ class MainViewModel @Inject constructor(
 
     fun setFragmentManager(fragmentManager: FragmentManager){
         navigationRepository.attachFragmentManager(fragmentManager)
-
         navigateToStartScreen()
     }
 
     private fun navigateToStartScreen(){
-        navigationRepository.navigateToMainScreen()
+        navigationRepository.navigateToStartScreen()
+    }
+
+    fun detachFragmentManager(){
+        navigationRepository.detachFragmentManager()
     }
 
     override fun onCleared() {
-        navigationRepository.detachFragmentManager()
         super.onCleared()
     }
 }

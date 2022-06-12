@@ -1,17 +1,19 @@
 package com.example.magicthegathering.data.implementations
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.magicthegathering.R
 import com.example.magicthegathering.domain.repositories.NavigationRepository
 import com.example.magicthegathering.presentation.fragment.main_screen.MainScreenFragment
+import com.example.magicthegathering.presentation.fragment.start_screen.StartScreenFragment
 import javax.inject.Inject
 
 
 class NavigationRepositoryImpl @Inject constructor() : NavigationRepository {
 
-    private var fragmentManager : FragmentManager? = null
+    override var fragmentManager: FragmentManager? = null
 
     override fun attachFragmentManager(fragmentManager: FragmentManager) {
         this.fragmentManager = fragmentManager
@@ -22,7 +24,7 @@ class NavigationRepositoryImpl @Inject constructor() : NavigationRepository {
     }
 
     override fun navigateToStartScreen() {
-        TODO("Not yet implemented")
+        navigateTo(StartScreenFragment())
     }
 
     override fun navigateToMainScreen() {
@@ -38,15 +40,18 @@ class NavigationRepositoryImpl @Inject constructor() : NavigationRepository {
         addToBackStack: Boolean = true,
         type: NavType = NavType.ADD,
     ) {
-        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+        Log.d("TAGS", "fm $fragmentManager")
+        fragmentManager?.let {
+            val transaction: FragmentTransaction = it.beginTransaction()
 
-        when (type) {
-            NavType.ADD -> transaction.add(R.id.container, fragment)
-            NavType.REPLACE -> transaction.replace(R.id.container, fragment)
+            when (type) {
+                NavType.ADD -> transaction.add(R.id.container, fragment)
+                NavType.REPLACE -> transaction.replace(R.id.container, fragment)
+            }
+
+            if(addToBackStack) transaction.addToBackStack(fragment.tag)
+            transaction.commit()
         }
-
-        if(addToBackStack) transaction.addToBackStack(fragment.tag)
-        transaction.commit()
     }
 
     internal enum class NavType {

@@ -27,4 +27,9 @@ class MainActivity @Inject constructor() : AppCompatActivity() {
 
         viewModel.setFragmentManager(supportFragmentManager)
     }
+
+    override fun onDestroy() {
+        viewModel.detachFragmentManager()
+        super.onDestroy()
+    }
 }

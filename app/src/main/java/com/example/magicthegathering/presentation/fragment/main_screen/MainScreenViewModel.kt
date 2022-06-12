@@ -16,7 +16,6 @@ class MainScreenViewModel @Inject constructor(
         }
     }
 
-
     override fun onCleared() {
         super.onCleared()
     }

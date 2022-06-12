@@ -6,6 +6,7 @@ import com.example.magicthegathering.data.di.CustomViewModelFactory
 import com.example.magicthegathering.data.di.ViewModelKey
 import com.example.magicthegathering.presentation.activity.MainViewModel
 import com.example.magicthegathering.presentation.fragment.main_screen.MainScreenViewModel
+import com.example.magicthegathering.presentation.fragment.start_screen.StartScreenViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,4 +26,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainScreenViewModel::class)
     protected abstract fun bindMainScreenViewModel(mainScreenViewModel: MainScreenViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(StartScreenViewModel::class)
+    protected abstract fun bindStartScreenViewModel(startScreenViewModel: StartScreenViewModel): ViewModel
 }

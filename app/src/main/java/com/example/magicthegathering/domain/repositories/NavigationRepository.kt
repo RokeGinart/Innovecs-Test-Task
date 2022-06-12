@@ -3,6 +3,7 @@ package com.example.magicthegathering.domain.repositories
 import androidx.fragment.app.FragmentManager
 
 interface NavigationRepository {
+    var fragmentManager : FragmentManager?
     fun attachFragmentManager(fragmentManager: FragmentManager)
     fun detachFragmentManager()
 
