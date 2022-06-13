@@ -4,14 +4,15 @@ import com.example.magicthegathering.BuildConfig
 import com.example.magicthegathering.data.network.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
 
 @Module
 class NetworkModule {
@@ -23,10 +24,14 @@ class NetworkModule {
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BASIC
+
         val okHttpBuilder = OkHttpClient.Builder()
         okHttpBuilder.connectTimeout(3, TimeUnit.MINUTES)
         okHttpBuilder.writeTimeout(3, TimeUnit.MINUTES)
         okHttpBuilder.readTimeout(3, TimeUnit.MINUTES)
+        okHttpBuilder.addInterceptor(interceptor)
         return okHttpBuilder.build()
     }
 

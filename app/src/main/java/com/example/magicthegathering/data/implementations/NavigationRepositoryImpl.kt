@@ -40,7 +40,6 @@ class NavigationRepositoryImpl @Inject constructor() : NavigationRepository {
         addToBackStack: Boolean = true,
         type: NavType = NavType.ADD,
     ) {
-        Log.d("TAGS", "fm $fragmentManager")
         fragmentManager?.let {
             val transaction: FragmentTransaction = it.beginTransaction()
 

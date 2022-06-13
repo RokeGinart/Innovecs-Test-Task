@@ -3,7 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".presentation.fragment.main_screen.MainScreenFragment">
+
+    <ImageView
+        android:id="@+id/back_iv"
+        android:layout_margin="@dimen/dimens_20"
+        app:tint="@color/grey"
+        android:src="@drawable/ic_left_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="@dimen/dimens_30"
+        android:layout_height="@dimen/dimens_30"/>
+
+    <View
+        app:layout_constraintTop_toBottomOf="@+id/back_iv"
+        android:id="@+id/border"
+        android:layout_marginTop="@dimen/dimens_20"
+        android:background="@color/grey_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/card_list_rv"
+        app:layout_constraintTop_toBottomOf="@+id/border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

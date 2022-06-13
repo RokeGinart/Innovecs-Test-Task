@@ -6,7 +6,7 @@ import com.example.magicthegathering.data.di.DaggerAppComponent
 
 class App : Application() {
 
-    lateinit var appComponent : AppComponent
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -14,5 +14,6 @@ class App : Application() {
         appComponent = DaggerAppComponent
             .builder()
             .build()
+
     }
 }

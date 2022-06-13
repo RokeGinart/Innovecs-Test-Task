@@ -107,6 +107,5 @@ class StartScreenFragment : Fragment(), OnDatePickerListener {
         this.date = date
         binding.dateEd.setText("${date.month}/${date.day}/${date.year}")
         binding.dateTil.error = null
-
     }
 }
