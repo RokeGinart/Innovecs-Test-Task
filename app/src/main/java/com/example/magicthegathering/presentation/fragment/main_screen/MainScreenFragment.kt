@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.magicthegathering.data.di.CustomViewModelFactory
-import com.example.magicthegathering.data.utils.CustomToast
+import com.example.magicthegathering.utils.ViewUtils
 import com.example.magicthegathering.databinding.FragmentMainScreenBinding
 import com.example.magicthegathering.domain.callback.OnItemEventMainScreen
 import com.example.magicthegathering.presentation.activity.MainActivity
@@ -83,7 +83,7 @@ class MainScreenFragment : Fragment(), OnItemEventMainScreen {
 
     private suspend fun observeErrors(){
         viewModel.errors.collect {
-            CustomToast.makeToast(requireContext(), getString(it.error))
+            ViewUtils.makeToast(requireContext(), getString(it.error))
         }
     }
 

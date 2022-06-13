@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.magicthegathering.data.di.CustomViewModelFactory
-import com.example.magicthegathering.data.utils.CustomToast
+import com.example.magicthegathering.utils.ViewUtils
 import com.example.magicthegathering.databinding.DetailsScreenFragmentBinding
 import com.example.magicthegathering.presentation.activity.MainActivity
 import kotlinx.coroutines.flow.collect
@@ -92,7 +92,7 @@ class DetailsScreenFragment : Fragment() {
 
     private suspend fun observeErrors(){
         viewModel.errors.collect {
-            CustomToast.makeToast(requireContext(), getString(it.error))
+            ViewUtils.makeToast(requireContext(), getString(it.error))
         }
     }
 

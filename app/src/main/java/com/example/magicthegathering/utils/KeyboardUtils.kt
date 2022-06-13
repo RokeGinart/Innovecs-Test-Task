@@ -1,4 +1,4 @@
-package com.example.magicthegathering.data.utils
+package com.example.magicthegathering.utils
 
 import android.content.Context
 import android.view.View

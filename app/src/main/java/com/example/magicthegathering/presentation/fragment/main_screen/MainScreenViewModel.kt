@@ -2,7 +2,7 @@ package com.example.magicthegathering.presentation.fragment.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.magicthegathering.data.utils.DateUtils
+import com.example.magicthegathering.utils.DateUtils
 import com.example.magicthegathering.domain.model.responses.NewsListResponseItem
 import com.example.magicthegathering.domain.model.ui.main_screen.ErrorTypes
 import com.example.magicthegathering.domain.model.ui.main_screen.UINewsModel

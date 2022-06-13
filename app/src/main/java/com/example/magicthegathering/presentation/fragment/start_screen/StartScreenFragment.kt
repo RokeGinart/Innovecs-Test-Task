@@ -11,7 +11,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.magicthegathering.data.di.CustomViewModelFactory
-import com.example.magicthegathering.data.utils.KeyboardUtils
+import com.example.magicthegathering.utils.KeyboardUtils
 import com.example.magicthegathering.databinding.StartScreenFragmentBinding
 import com.example.magicthegathering.domain.callback.OnDatePickerListener
 import com.example.magicthegathering.domain.model.ui.DateModel
