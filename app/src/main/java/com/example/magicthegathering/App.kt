@@ -14,6 +14,5 @@ class App : Application() {
         appComponent = DaggerAppComponent
             .builder()
             .build()
-
     }
 }

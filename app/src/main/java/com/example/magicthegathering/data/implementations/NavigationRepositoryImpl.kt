@@ -26,7 +26,7 @@ class NavigationRepositoryImpl @Inject constructor() : NavigationRepository {
     }
 
     override fun navigateToStartScreen() {
-        navigateTo(StartScreenFragment(), isAnimNecessary = false)
+        navigateTo(StartScreenFragment(), addToBackStack = false, isAnimNecessary = false)
     }
 
     override fun navigateToMainScreen() {

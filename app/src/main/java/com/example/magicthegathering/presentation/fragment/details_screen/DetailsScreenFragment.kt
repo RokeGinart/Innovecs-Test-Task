@@ -75,6 +75,7 @@ class DetailsScreenFragment : Fragment() {
         viewModel.result.collect {
             with(binding){
                 progress.isVisible = false
+                detailsContainer.isVisible = true
 
                 Glide.with(requireActivity())
                     .load(it.image)
