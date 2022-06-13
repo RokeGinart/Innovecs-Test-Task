@@ -1,35 +1,33 @@
-package com.example.magicthegathering.presentation.fragment.main_screen
+package com.example.magicthegathering.presentation.fragment.details_screen
 
 import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.magicthegathering.data.di.CustomViewModelFactory
 import com.example.magicthegathering.data.utils.CustomToast
-import com.example.magicthegathering.databinding.FragmentMainScreenBinding
-import com.example.magicthegathering.domain.callback.OnItemEventMainScreen
+import com.example.magicthegathering.databinding.DetailsScreenFragmentBinding
 import com.example.magicthegathering.presentation.activity.MainActivity
-import com.example.magicthegathering.presentation.fragment.main_screen.adapter.CardListRecyclerViewAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+class DetailsScreenFragment : Fragment() {
 
-class MainScreenFragment : Fragment(), OnItemEventMainScreen {
+    private lateinit var binding: DetailsScreenFragmentBinding
 
-    private lateinit var binding : FragmentMainScreenBinding
     @Inject
     lateinit var viewModelFactory: CustomViewModelFactory
 
-    private val viewModel : MainScreenViewModel by viewModels { viewModelFactory }
+    private val viewModel: DetailsScreenViewModel by viewModels { viewModelFactory }
 
-    private val adapter = CardListRecyclerViewAdapter(this)
+    private var newsId : Int = 0
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -40,44 +38,54 @@ class MainScreenFragment : Fragment(), OnItemEventMainScreen {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainScreenBinding.inflate(inflater, container, false)
+        binding = DetailsScreenFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getData()
+        unpackArguments()
 
         initViews()
 
         observe()
+
+        viewModel.getNewsById(newsId)
     }
 
     private fun initViews(){
-        with(binding){
-            backIv.setOnClickListener {
-                requireActivity().onBackPressed()
-            }
-
-            val linearLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            cardListRv.layoutManager = linearLayoutManager
-            cardListRv.adapter = adapter
+        binding.backIv.setOnClickListener {
+            requireActivity().onBackPressed()
         }
+    }
+
+    private fun unpackArguments(){
+        newsId = arguments?.getInt(NEWS_ID) ?: 0
     }
 
     private fun observe(){
         with(viewLifecycleOwner.lifecycleScope) {
-            launch { observeRecyclerViewItems() }
+            launch { observeResult() }
             launch { observeErrors() }
         }
     }
 
-    private suspend fun observeRecyclerViewItems(){
+    private suspend fun observeResult(){
         viewModel.result.collect {
-            adapter.setList(it)
-            binding.progress.isVisible = false
+            with(binding){
+                progress.isVisible = false
+
+                Glide.with(requireActivity())
+                    .load(it.image)
+                    .centerCrop()
+                    .into(newsImageIv)
+
+                siteTv.text = it.publisher
+                dateTv.text = it.date
+                titleTv.text = it.title
+                descriptionTv.text = it.description
+            }
         }
     }
 
@@ -87,7 +95,7 @@ class MainScreenFragment : Fragment(), OnItemEventMainScreen {
         }
     }
 
-    override fun onItemClicked(id: Int) {
-        viewModel.navigateToNewsDetails(id)
+    companion object {
+        const val NEWS_ID = "NEWS_ID"
     }
 }

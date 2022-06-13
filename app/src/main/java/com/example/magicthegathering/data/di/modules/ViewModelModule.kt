@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.magicthegathering.data.di.CustomViewModelFactory
 import com.example.magicthegathering.data.di.ViewModelKey
 import com.example.magicthegathering.presentation.activity.MainViewModel
+import com.example.magicthegathering.presentation.fragment.details_screen.DetailsScreenViewModel
 import com.example.magicthegathering.presentation.fragment.main_screen.MainScreenViewModel
 import com.example.magicthegathering.presentation.fragment.start_screen.StartScreenViewModel
 import dagger.Binds
@@ -31,4 +32,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(StartScreenViewModel::class)
     protected abstract fun bindStartScreenViewModel(startScreenViewModel: StartScreenViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailsScreenViewModel::class)
+    protected abstract fun bindDetailsScreenViewModel(detailsScreenViewModel: DetailsScreenViewModel): ViewModel
 }

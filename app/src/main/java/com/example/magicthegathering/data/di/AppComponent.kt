@@ -5,6 +5,7 @@ import com.example.magicthegathering.data.di.modules.NetworkModule
 import com.example.magicthegathering.data.di.modules.RepositoryModule
 import com.example.magicthegathering.data.di.modules.ViewModelModule
 import com.example.magicthegathering.presentation.activity.MainActivity
+import com.example.magicthegathering.presentation.fragment.details_screen.DetailsScreenFragment
 import com.example.magicthegathering.presentation.fragment.main_screen.MainScreenFragment
 import com.example.magicthegathering.presentation.fragment.start_screen.StartScreenFragment
 import dagger.Component
@@ -21,4 +22,5 @@ interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(fragment: StartScreenFragment)
     fun inject(fragment: MainScreenFragment)
+    fun inject(fragment: DetailsScreenFragment)
 }

@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.magicthegathering.databinding.ItemCardMainScreenBinding
+import com.example.magicthegathering.domain.callback.OnItemEventMainScreen
 import com.example.magicthegathering.domain.model.ui.main_screen.UINewsModel
 
 
-class CardListRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CardListRecyclerViewAdapter(
+    private val onItemEventMainScreen : OnItemEventMainScreen
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val itemsList = arrayListOf<UINewsModel>()
 
@@ -38,7 +41,7 @@ class CardListRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
 
         fun bind(news: UINewsModel) {
             with(binding) {
-                cardNameTv.text = news.title
+                newsTitleTv.text = news.title
                 Glide.with(root)
                     .load(news.image)
                     .centerCrop()
@@ -46,6 +49,10 @@ class CardListRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
 
                 newsSiteTv.text = news.newsSite
                 newsDateTv.text = news.publishDate
+
+                newsContainer.setOnClickListener{
+                    onItemEventMainScreen.onItemClicked(news.id)
+                }
             }
         }
     }

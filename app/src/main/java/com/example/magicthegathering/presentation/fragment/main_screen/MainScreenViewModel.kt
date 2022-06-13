@@ -6,13 +6,15 @@ import com.example.magicthegathering.data.utils.DateUtils
 import com.example.magicthegathering.domain.model.responses.NewsListResponseItem
 import com.example.magicthegathering.domain.model.ui.main_screen.ErrorTypes
 import com.example.magicthegathering.domain.model.ui.main_screen.UINewsModel
+import com.example.magicthegathering.domain.repositories.NavigationRepository
 import com.example.magicthegathering.domain.usecases.GetCardsListUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainScreenViewModel @Inject constructor(
-    private val getCardsListUseCase: GetCardsListUseCase
+    private val getCardsListUseCase: GetCardsListUseCase,
+    private val navigationRepository: NavigationRepository
 ) : ViewModel() {
 
     val errors = MutableSharedFlow<ErrorTypes>()
@@ -46,4 +48,8 @@ class MainScreenViewModel @Inject constructor(
         publishDate = DateUtils.parseDate(news.publishedAt),
         image = news.imageUrl,
     )
+
+    fun navigateToNewsDetails(id : Int){
+        navigationRepository.navigateToDetailsScreen(id)
+    }
 }

@@ -9,5 +9,5 @@ interface NavigationRepository {
 
     fun navigateToStartScreen()
     fun navigateToMainScreen()
-    fun navigateToCardDetailsScreen(id : Int)
+    fun navigateToDetailsScreen(id : Int)
 }

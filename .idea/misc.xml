@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/button_state_list.xml" value="0.131" />
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.131" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/details_screen_fragment.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_main_screen.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_card_main_screen.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/start_screen_fragment.xml" value="0.19610507246376813" />

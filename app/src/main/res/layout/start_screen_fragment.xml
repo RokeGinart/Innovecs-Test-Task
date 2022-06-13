@@ -115,6 +115,7 @@
 
             <ImageView
                 app:tint="@color/grey"
+                android:contentDescription="@string/date"
                 android:src="@drawable/ic_calendar"
                 app:layout_constraintTop_toTopOf="@+id/date_til"
                 app:layout_constraintEnd_toEndOf="@+id/date_til"
