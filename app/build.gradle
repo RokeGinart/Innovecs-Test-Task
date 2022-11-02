@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.magicthegathering"
+        applicationId "com.example.innovecs_test_task"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -23,11 +23,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"https://api.spaceflightnewsapi.net/v3/\""
+            buildConfigField "String", "API_URL", "\"https://s3-us-west-2.amazonaws.com/\""
         }
 
         release {
-            buildConfigField "String", "API_URL", "\"https://api.spaceflightnewsapi.net/v3/\""
+            buildConfigField "String", "API_URL", "\"androidexam/butto_to_action_config.json\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

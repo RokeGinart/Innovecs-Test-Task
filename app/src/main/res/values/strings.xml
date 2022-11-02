@@ -1,22 +1,12 @@
 <resources>
-    <string name="app_name">Space Flight News</string>
-    <string name="welcome">Welcome to the \n Space Flight News!</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="email">Email</string>
-    <string name="date">Date</string>
-    <string name="next">Next</string>
-
-    <string name="name_empty_validation">Name can\'t be empty</string>
-    <string name="name_less_then_3_symbols_validation">Name must have at least 3 characters</string>
-
-    <string name="surname_empty_validation">Surname can\'t be empty</string>
-    <string name="surname_less_then_3_symbols_validation">Surname must have at least 3 characters</string>
-
-    <string name="email_empty_validation">Email can\'t be empty</string>
-    <string name="email_invalid_form_validation">Incorrect email. Should look like: example@gmail.com</string>
-
-    <string name="date_empty_validation">Date can\'t be empty</string>
+    <string name="app_name">Innovecs Test Task</string>
+    <string name="start">Start</string>
+    <string name="toast_action_message">Action is Toast!</string>
+    <string name="channel_name">InnovecsChannel</string>
+    <string name="channel_description">Innovecs Info Channel</string>
+    <string name="notification_title">Action is Notification!</string>
+    <string name="notification_description">Tap to open contacts</string>
+    <string name="no_internet_connection_message">No Internet connection</string>
 
     <string name="smth_went_wrong">Something went wrong</string>
     <string name="empty_body">Empty body</string>

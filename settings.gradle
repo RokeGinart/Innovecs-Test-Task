@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Magic The Gathering"
+rootProject.name = "Innovecs Test Task"
 include ':app'
